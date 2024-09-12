@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Prompt Generator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@shopify/polaris@12/build/esm/styles.css"
+    />
+  </head>
+  <body>
+
+    <div id="popup" class="popup">
+      <div class="Polaris-ShadowBevel" style="max-width: 600px; width: 600px; --pc-shadow-bevel-z-index: 32; --pc-shadow-bevel-content-xs: &quot;&quot;; --pc-shadow-bevel-box-shadow-xs: var(--p-shadow-100); --pc-shadow-bevel-border-radius-xs: var(--p-border-radius-300);">
+        <div class="Polaris-Box" style="--pc-box-background:var(--p-color-bg-surface);--pc-box-min-height:100%;--pc-box-overflow-x:clip;--pc-box-overflow-y:clip;--pc-box-padding-block-start-xs:var(--p-space-400);--pc-box-padding-block-end-xs:var(--p-space-400);--pc-box-padding-inline-start-xs:var(--p-space-400);--pc-box-padding-inline-end-xs:var(--p-space-400)">
+
+
+          <div
+          class="Polaris-InlineGrid"
+          style="
+            display: flex;
+            flex-direction: row;
+            --pc-inline-grid-grid-template-columns-xs: 1fr 1fr auto;
+            --pc-inline-grid-gap-xs: var(--p-space-100);
+            max-width: 833.69px;
+            justify-content: space-between;
+            align-items: center;
+          "
+          >
+            <h2 class="Polaris-Text--root Polaris-Text--bodyMd">Add an API Key</h2>
+
+
+            <button onclick="hidePopup()" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--iconOnly" aria-label="Add theme" type="button">
+              <span class="Polaris-Button__Icon">
+                <span class="Polaris-Icon">
+                  <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M13.97 15.03a.75.75 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.75.75 0 0 0-1.06-1.06l-3.97 3.97-3.97-3.97a.75.75 0 0 0-1.06 1.06l3.97 3.97-3.97 3.97a.75.75 0 1 0 1.06 1.06l3.97-3.97 3.97 3.97Z">
+                    </path>
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </div>
+
+            <hr class="Polaris-Divider" style="border-block-start:var(--p-border-width-025) solid var(--p-color-border); margin: var(--p-space-200) 0px;">
+
+              <div class="Polaris-Connected">
+                <div
+                  class="Polaris-Connected__Item Polaris-Connected__Item--primary"
+                  style="width: 100%; margin-bottom: var(--p-space-200);"
+                >
+                  <div class="Polaris-TextField Polaris-TextField--hasValue">
+                    <input
+                      id="keyInput"
+                      autocomplete="off"
+                      class="Polaris-TextField__Input"
+                      aria-labelledby=":Rq6:Label"
+                      aria-invalid="false"
+                      data-1p-ignore="true"
+                      data-lpignore="true"
+                      data-form-type="other"
+                      placeholder="API-KEY"
+                      maxlength="300"
+                      type="password"
+                    />
+                    <div class="Polaris-TextField__Backdrop"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="Polaris-ButtonGroup">
+                <div class="Polaris-ButtonGroup__Item">
+                  <button onclick="removeAPI()" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="button">
+                    <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium">Remove</span>
+                  </button>
+                </div>
+                <div class="Polaris-ButtonGroup__Item">
+                  <button id="keySubmit" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="submit">
+                    <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium">Save</span>
+                  </button>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="wrapper_center">
+        <div
+        class="Polaris-ShadowBevel"
+        style="
+          background-color: #fff;
+          width: fit-content;
+          margin: var(--p-space-200);
+          padding: var(--p-space-200);
+          --pc-shadow-bevel-z-index: 32;
+          --pc-shadow-bevel-content-xs: '';
+          --pc-shadow-bevel-box-shadow-xs: var(--p-shadow-100);
+          --pc-shadow-bevel-border-radius-xs: var(--p-border-radius-300);
+
+        "
+      >
+        <div
+          class="Polaris-InlineGrid"
+          style="
+            display: flex;
+            flex-direction: row;
+            --pc-inline-grid-grid-template-columns-xs: 1fr 1fr auto;
+            --pc-inline-grid-gap-xs: var(--p-space-100);
+            max-width: 833.69px
+          "
+        >
+          <form id="chat-form" action="submit"
+          class="Polaris-InlineGrid"
+          style="
+            display: flex;
+            flex-direction: row;
+            --pc-inline-grid-grid-template-columns-xs: 1fr 1fr auto;
+            --pc-inline-grid-gap-xs: var(--p-space-100);
+            max-width: 833.69px
+          ">
+            <div class="Polaris-Connected">
+              <div
+                class="Polaris-Connected__Item Polaris-Connected__Item--primary"
+                style="width: 350px"
+              >
+                <div class="Polaris-TextField Polaris-TextField--hasValue">
+                  <input
+                    id="mytext-input"
+                    autocomplete="off"
+                    class="Polaris-TextField__Input"
+                    type="text"
+                    aria-labelledby=":Rq6:Label"
+                    aria-invalid="false"
+                    data-1p-ignore="true"
+                    data-lpignore="true"
+                    data-form-type="other"
+                    placeholder="Context"
+                    maxlength="125"
+                  />
+                  <div class="Polaris-TextField__Backdrop"></div>
+                </div>
+              </div>
+            </div>
+            <div class="Polaris-FormLayout__Item Polaris-FormLayout--condensed">
+              <div class="Polaris-Labelled--hidden" style="width: 350px">
+                <div class="Polaris-Select">
+                  <select
+                    id="prompt-Selecter"
+                    class="Polaris-Select__Input"
+                    aria-invalid="false"
+                    style="cursor: pointer;"
+                  >
+                    <option value="Conflict" selected="">Conflict</option>
+                    <option value="Joke" selected="">Joke</option>
+                    <option value="Character Prompt">Character Prompt</option>
+                    <option value="Dialogue Prompt">Dialogue Prompt</option>
+                    <option value="Setting Description">Setting Description</option>
+                    <option value="Story Outline">Story Outline</option>
+                    <option value="Plot Twist">Plot Twist</option>
+                    <option value="Theme Exploration">Theme Exploration</option>
+                    <option value="Backstory Detail">Backstory Detail</option>
+                    <option value="Conflict Resolution">Conflict Resolution</option>
+                    <option value="Story Prompt" selected="">Story Prompt</option>
+                  
+                  </select>
+                  <div class="Polaris-Select__Content" aria-hidden="true">
+                    <span class="Polaris-Select__SelectedOption">Story Prompt</span>
+                    <span class="Polaris-Select__Icon"
+                      ><span class="Polaris-Icon">
+                        <svg
+                          viewBox="1 1 18 18"
+                          class="Polaris-Icon__Svg"
+                          focusable="false"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M10.884 4.323a1.25 1.25 0 0 0-1.768 0l-2.646 2.647a.75.75 0 0 0 1.06 1.06l2.47-2.47 2.47 2.47a.75.75 0 1 0 1.06-1.06l-2.646-2.647Z"
+                          ></path>
+                          <path
+                            d="m13.53 13.03-2.646 2.647a1.25 1.25 0 0 1-1.768 0l-2.646-2.647a.75.75 0 0 1 1.06-1.06l2.47 2.47 2.47-2.47a.75.75 0 0 1 1.06 1.06Z"
+                          ></path>
+                        </svg> </span
+                    ></span>
+                  </div>
+                  <div class="Polaris-Select__Backdrop"></div>
+                </div>
+              </div>
+            </div>
+            <div class="Polaris-ButtonGroup">
+              <div class="Polaris-ButtonGroup__Item">
+                <button
+                  onclick="showPopup()"
+                  class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter"
+                  type="button"
+                >
+                  <span
+                    class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium"
+                  >
+                    <span class="Polaris-Icon Polaris-Icon--toneBase">
+                      <svg
+                        viewBox="1 1 18 18"
+                        class="Polaris-Icon__Svg"
+                        focusable="false"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.5 6.5c0-1.933 1.567-3.5 3.5-3.5s3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5-3.5-1.567-3.5-3.5Zm3.5-2c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2Z"
+                        ></path>
+                        <path
+                          d="M9 12.5c-1.734 0-3.33.94-4.173 2.455l-.302.545h5.725c.414 0 .75.336.75.75s-.336.75-.75.75h-6.001c-1.02 0-1.665-1.096-1.17-1.987l.437-.786c1.106-1.992 3.206-3.227 5.484-3.227.414 0 .75.336.75.75s-.336.75-.75.75Z"
+                        ></path>
+                        <path
+                          d="M15.5 11.375c0 .483-.392.875-.875.875s-.875-.392-.875-.875.392-.875.875-.875.875.392.875.875Z"
+                        ></path>
+                        <path
+                          fill-rule="evenodd"
+                          d="M11.25 11.376c0-1.865 1.511-3.376 3.376-3.376 1.864 0 3.376 1.511 3.376 3.376v.726c0 .731-.365 1.377-.923 1.766.05.353-.002.713-.145 1.036.295.752.117 1.65-.542 2.226l-.397.347c-.915.798-2.324.604-2.989-.412l-.326-.498c-.213-.325-.326-.706-.326-1.095v-1.492c-.659-.367-1.104-1.07-1.104-1.879v-.725Zm2.41 1.457c-.074-.051-.163-.081-.26-.081-.359 0-.65-.291-.65-.65v-.726c0-1.036.84-1.876 1.876-1.876s1.876.84 1.876 1.876v.726c0 .359-.291.65-.65.65h-.247c-.106 0-.205.034-.285.092-.114.082-.19.212-.201.361l-.001.015v.02c0 .112.038.222.11.309l.282.345c.164.2.087.502-.153.6l-.003.001c-.193.08-.274.288-.22.466.02.07.062.135.125.187l.133.109c.014.01.026.021.038.033.196.196.19.523-.025.71l-.397.347c-.16.14-.383.158-.559.067-.01-.005-.021-.011-.031-.018l-.005-.002c-.034-.022-.065-.047-.094-.077l-.006-.007c-.019-.02-.036-.042-.052-.066l-.326-.498c-.053-.082-.082-.177-.082-.274v-2.267c0-.154-.076-.29-.194-.372Z"
+                        ></path>
+                      </svg>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div
+                style="
+                  margin-top: var(--p-space-200);
+                  margin-left: var(--p-space-100);
+                "
+              >
+                <button id="submit"
+                  class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter"
+                  type="submit"
+                  style="height: 32px"
+                >
+                  <span
+                    class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium"
+                    >Generate</span
+                  >
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- devider -->
+
+        <hr class="Polaris-Divider" style="border-block-start:var(--p-border-width-025) solid var(--p-color-border); margin: var(--p-space-200) 0px;">
+
+        <!-- banner -->
+
+        <div id="banner_popup_key_infm">
+            <div class="Polaris-TextContainer">
+              <div class="Polaris-Banner Polaris-Banner--withinContentContainer" tabindex="0" role="status" aria-live="polite">
+                <div class="Polaris-Box" style="--pc-box-color:var(--p-color-text-info);--pc-box-background:var(--p-color-bg-surface-info);--pc-box-border-radius:var(--p-border-radius-200);--pc-box-padding-block-start-xs:var(--p-space-200);--pc-box-padding-block-end-xs:var(--p-space-200);--pc-box-padding-inline-start-xs:var(--p-space-200);--pc-box-padding-inline-end-xs:var(--p-space-200);--pc-box-width:100%">
+                  <div class="Polaris-InlineStack" style="--pc-inline-stack-align:space-between;--pc-inline-stack-block-align:start;--pc-inline-stack-wrap:nowrap;--pc-inline-stack-gap-xs:var(--p-space-200);--pc-inline-stack-flex-direction-xs:row">
+                    <div class="Polaris-InlineStack" style="--pc-inline-stack-wrap:nowrap;--pc-inline-stack-gap-xs:var(--p-space-150);--pc-inline-stack-flex-direction-xs:row">
+                      <span class="Polaris-Banner__text--info">
+                        <span class="Polaris-Icon">
+                          <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                            <path d="M10 14a.75.75 0 0 1-.75-.75v-3.5a.75.75 0 0 1 1.5 0v3.5a.75.75 0 0 1-.75.75Z">
+                            </path>
+                            <path d="M9 7a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z">
+                            </path>
+                            <path fill-rule="evenodd" d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm-1.5 0a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0Z">
+                            </path>
+                          </svg>
+                        </span>
+                      </span>
+                      <div class="Polaris-Box" style="--pc-box-width:100%">
+                        <div class="Polaris-BlockStack" style="--pc-block-stack-order:column;--pc-block-stack-gap-xs:var(--p-space-200)">
+                          <div class="Polaris-BlockStack" style="--pc-block-stack-order:column;--pc-block-stack-gap-xs:var(--p-space-050)">
+                            <div>
+                              <span class="Polaris-Text--root Polaris-Text--bodyMd">
+                                <p>Remember to add a valid OpenAi API key <button onclick="showPopup()" type="button" class="Polaris-Link Polaris-Link--monochrome">Here</button>
+                              </p>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantTertiary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--iconOnly" id="banner_remove" aria-label="Dismiss notification" type="button">
+                    <span class="Polaris-Button__Icon">
+                      <span class="Polaris-Banner__text--info">
+                        <span class="Polaris-Icon">
+                          <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                            <path d="M13.97 15.03a.75.75 0 1 0 1.06-1.06l-3.97-3.97 3.97-3.97a.75.75 0 0 0-1.06-1.06l-3.97 3.97-3.97-3.97a.75.75 0 0 0-1.06 1.06l3.97 3.97-3.97 3.97a.75.75 0 1 0 1.06 1.06l3.97-3.97 3.97 3.97Z">
+                            </path>
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output -->
+
+        <div class="Polaris-Bleed" style="margin-top: var(--p-border-radius-200); --pc-bleed-margin-inline-start-xs:var(--p-space-400);--pc-bleed-margin-inline-end-xs:var(--p-space-400)">
+        <div class="Polaris-Box" style="--pc-box-background:var(--p-color-bg-surface-secondary);--pc-box-padding-block-start-xs:var(--p-space-300);--pc-box-padding-block-end-xs:var(--p-space-300);--pc-box-padding-inline-start-xs:var(--p-space-400);--pc-box-padding-inline-end-xs:var(--p-space-400)">
+            <div class="Polaris-BlockStack" style="max-width:829.47px; --pc-block-stack-order:column;--pc-block-stack-gap-xs:var(--p-space-200); padding:--p-space-400 auto;">
+              <div class="Polaris-InlineStack" style="--pc-inline-stack-wrap:nowrap;--pc-inline-stack-gap-xs:var(--p-space-150);--pc-inline-stack-flex-direction-xs:row">
+                <span class="Polaris-Banner__text--info">
+                  <span class="Polaris-Icon">
+                    <svg viewBox="1 1 18 18" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path fill-rule="evenodd" d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-2.72-2.72a.75.75 0 1 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.06-1.06l2.72-2.72h-9.69a.75.75 0 0 1-.75-.75Z"></path></svg>
+                  </span>
+                </span>
+                <div class="Polaris-Box" style="--pc-box-width:100%">
+                  <div class="Polaris-BlockStack" style="--pc-block-stack-order:column;--pc-block-stack-gap-xs:var(--p-space-200)">
+                    <div class="Polaris-BlockStack" style="--pc-block-stack-order:column;--pc-block-stack-gap-xs:var(--p-space-050)">
+                      <div>
+                        <span class="Polaris-Text--root Polaris-Text--bodyMd">
+                          <p id="response" style="max-width: 833.69px;" class="text-wrap">Your promp will output here</p>
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="Polaris-InlineStack" style="max-width:833.69px; margin: 0px auto; margin-top: 0.5rem;  --pc-inline-stack-align:end;--pc-inline-stack-wrap:wrap;--pc-inline-stack-flex-direction-xs:row"><div class="Polaris-ButtonGroup"><div class="Polaris-ButtonGroup__Item">
+          <button id="clear_button" onclick="clear_responce()" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--toneCritical" type="button">
+            <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--semibold">Clear</span>
+          </button>
+        </button></div><div class="Polaris-ButtonGroup__Item">
+          <button id="download_button" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--iconWithText" aria-label="Create shipping label" type="button"><span class="Polaris-Button__Icon"><span class="Polaris-Icon"><svg viewBox="1 1 18 18" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path d="M10.75 5.75c0-.414-.336-.75-.75-.75s-.75.336-.75.75v3.5h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5Z"></path></svg></span></span><span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--semibold">Save</span></button></div></div></div>
+    </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <!-- Include DOMPurify -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+    <script>
+      // Wait for the DOM to load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the select element
+        const selectElement = document.querySelector(".Polaris-Select__Input");
+        // Get the span element for the selected option
+        const selectedOptionSpan = document.querySelector(
+          ".Polaris-Select__SelectedOption"
+        );
+
+        // Update the span text when the select option changes
+        selectElement.addEventListener("change", function () {
+          const selectedText = this.options[this.selectedIndex].text;
+          selectedOptionSpan.textContent = selectedText;
+        });
+      });
+
+      // Get a reference to the button element 
+        const remove_banner = document.getElementById('banner_remove');
+        const banner = document.getElementById('banner_popup_key_infm') 
+        
+        // Add a click event listener to the button 
+        remove_banner.addEventListener('click', function() { 
+
+            banner.innerHTML="";
+
+        }); 
+
+        function download_txt() {
+          const text = document.getElementById("response").innerText; // Get the text from the output
+          const blob = new Blob([text], { type: "text/plain" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "output.txt";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+
+        document.getElementById('download_button').addEventListener('click', download_txt);
+
+        function clear_responce() {
+            document.getElementById("response").innerHTML = "Your promp will output here";
+        }
+
+
+        document.getElementById('clear_button').addEventListener('click', clear_responce);
+    </script>
+    <script src="Static/main.js"></script>
+  </body>
+</html>
