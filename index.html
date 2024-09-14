@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="description" content="Generate unique story ideas with our story prompt generator! Choose from options like setting, conflict, and plot twist to inspire creative writing and unlock endless storytelling possibilities.">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -73,12 +74,12 @@
 
               <div class="Polaris-ButtonGroup">
                 <div class="Polaris-ButtonGroup__Item">
-                  <button onclick="removeAPI()" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="button">
+                  <button aria-label="remove api key" onclick="removeAPI()" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="button">
                     <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium">Remove</span>
                   </button>
                 </div>
                 <div class="Polaris-ButtonGroup__Item">
-                  <button id="keySubmit" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="submit">
+                  <button aria-label="save api key" id="keySubmit" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" type="submit">
                     <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium">Save</span>
                   </button>
                 </div>
@@ -133,6 +134,7 @@
                     class="Polaris-TextField__Input"
                     type="text"
                     aria-labelledby=":Rq6:Label"
+                    aria-label="prompt context"
                     aria-invalid="false"
                     data-1p-ignore="true"
                     data-lpignore="true"
@@ -151,6 +153,7 @@
                     id="prompt-Selecter"
                     class="Polaris-Select__Input"
                     aria-invalid="false"
+                    aria-label="prompt type"
                     style="cursor: pointer;"
                   >
                     <option value="Conflict" selected="">Conflict</option>
@@ -193,6 +196,7 @@
               <div class="Polaris-ButtonGroup__Item">
                 <button
                   onclick="showPopup()"
+                  aria-label="api key options"
                   class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantSecondary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter"
                   type="button"
                 >
@@ -231,7 +235,7 @@
                   margin-left: var(--p-space-100);
                 "
               >
-                <button id="submit"
+                <button id="submit" aria-label="generate prompt"
                   class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter"
                   type="submit"
                   style="height: 32px"
@@ -283,7 +287,7 @@
                       </div>
                     </div>
                   </div>
-                  <button class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantTertiary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--iconOnly" id="banner_remove" aria-label="Dismiss notification" type="button">
+                  <button aria-label="hide popup" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantTertiary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter Polaris-Button--iconOnly" id="banner_remove" aria-label="Dismiss notification" type="button">
                     <span class="Polaris-Button__Icon">
                       <span class="Polaris-Banner__text--info">
                         <span class="Polaris-Icon">
